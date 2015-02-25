@@ -6,10 +6,33 @@ package possystem;
  * @author ekordik
  */
 public class CashRegister {
-    private CustomerStrategy customer = new Customer();
+    private CustomerStrategy customer;
     private LineItemStrategy[] lineItems = new LineItem[0];
-    private DataAccessStrategy database = new FakeDatabase();
+    private DataAccessStrategy database;
+    private InvoiceGeneratorStrategy invoice;
+
     private int index;
+
+    public CashRegister(DataAccessStrategy database, InvoiceGeneratorStrategy invoice) {
+        this.database = database;
+        this.invoice = invoice;
+    }
+
+    public CashRegister() {
+    }
+
+    public CashRegister(DataAccessStrategy database) {
+        this.database = database;
+    }
+
+    public void setInvoice(InvoiceGeneratorStrategy invoice) {
+        this.invoice = invoice;
+    }
+    
+    
+    public void setDatabase(DataAccessStrategy database) {
+        this.database = database;
+    }
     
     public void startSale(String customerID){
         customer = database.findCustomer(customerID);
@@ -26,26 +49,16 @@ public class CashRegister {
         lineItems = lineItemsCopy;
         
         //Adds an item to the Array
-        lineItems[index] = new LineItem(database.findProduct(productID), Integer.parseInt(Qty));
+        lineItems[index] = new LineItem(database.findProduct(productID), Qty);
         index++;
         
-        //For testing Purposes
-        for(int i = 0; i<index; i++){
-            System.out.println(lineItems[i].getQuantity());
-        }
     }
     
-    public void generateInvoice(){
-        
+    public void generateInvoice(){ 
+        invoice.setCustomer(customer);
+        invoice.setLineItems(lineItems);
+        invoice.generateInvoice();
     }
     
-    public static void main(String[] args) {
-        CashRegister register = new CashRegister();
-        register.startSale("100");
-        register.addProduct("A101", "1");
-        register.addProduct("B205", "2");
-            
-       
- 
-    }
+   
 }

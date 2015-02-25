@@ -9,7 +9,7 @@ package possystem;
  *
  * @author ekordik
  */
-public class Product {
+public class Product implements ProductStrategy {
     private String productID;
     private String description;
     private double price;
@@ -31,35 +31,43 @@ public class Product {
         return discount;
     }
 
+    @Override
     public void setDiscount(DiscountStrategy discount) {
         this.discount = discount;
     }
     
     
+    @Override
     public String getProductID() {
         return productID;
     }
 
+    @Override
     public void setProductID(String productID) {
         this.productID = productID;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public double getPrice() {
         return price;
     }
 
+    @Override
     public void setPrice(double price) {
         this.price = price;
     }
     
+    @Override
     public double getDiscountAmt(int qty){
         return discount.getDiscountAmt(price, qty);
     }
