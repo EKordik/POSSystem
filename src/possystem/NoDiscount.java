@@ -13,17 +13,17 @@ public class NoDiscount implements DiscountStrategy {
     private double discountRate = 0.00;
     
     @Override
-    public double getDiscountAmt(double price, int qty) {
+    public final double getDiscountAmt(final double price, final int qty) {
         return 0.00;
     }
 
     @Override
-    public double getDiscountRate() {
+    public final double getDiscountRate() {
          return discountRate;
     }
 
     @Override
-    public void setDiscountRate(double discountRate) {
+    public final void setDiscountRate(double discountRate) {
         //Rate is zero. It cannot be set
     }
     

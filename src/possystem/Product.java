@@ -32,54 +32,44 @@ public class Product implements ProductStrategy {
     }
 
     @Override
-    public void setDiscount(DiscountStrategy discount) {
+    public final void setDiscount(final DiscountStrategy discount) {
         this.discount = discount;
     }
     
     
     @Override
-    public String getProductID() {
+    public final String getProductID() {
         return productID;
     }
 
     @Override
-    public void setProductID(String productID) {
+    public final  void setProductID(String productID) {
         this.productID = productID;
     }
 
     @Override
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
     @Override
-    public void setDescription(String description) {
+    public final void setDescription(String description) {
         this.description = description;
     }
 
     @Override
-    public double getPrice() {
+    public final double getPrice() {
         return price;
     }
 
     @Override
-    public void setPrice(double price) {
+    public final void setPrice(final double price) {
         this.price = price;
     }
     
     @Override
-    public double getDiscountAmt(int qty){
+    public final double getDiscountAmt(int qty){
         return discount.getDiscountAmt(price, qty);
     }
 
-    public static void main(String[] args) {
-        Product prod = new Product();
-        prod.setDescription("Hat");
-        prod.setDiscount(new PercentOffDiscount(.10));
-        prod.setPrice(100.00);
-        prod.setProductID("A101");
-        
-        System.out.println(prod.getProductID() + " " + prod.getDescription());
-        System.out.println(prod.getPrice() + " " + prod.getDiscountAmt(1));
-    }
 }

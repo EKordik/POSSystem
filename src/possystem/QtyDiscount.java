@@ -13,18 +13,18 @@ public class QtyDiscount implements DiscountStrategy {
     private double discountRate;
     private int minQty;
 
-    public QtyDiscount(double discountRate, int minQty) {
+    public QtyDiscount(final double discountRate, final int minQty) {
         this.discountRate = discountRate;
         this.minQty = minQty;
     }
 
-    public QtyDiscount(int minQty) {
+    public QtyDiscount(final int minQty) {
         this.minQty = minQty;
     }
     
     
     @Override
-    public double getDiscountAmt(double price, int qty) {
+    public final double getDiscountAmt(final double price, final int qty) {
         if(qty < minQty){
             return 0;
         }else{
@@ -33,12 +33,12 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     @Override
-    public double getDiscountRate() {
+    public final double getDiscountRate() {
         return discountRate;
     }
 
     @Override
-    public void setDiscountRate(double discountRate) {
+    public final void setDiscountRate(double discountRate) {
         this.discountRate=discountRate;
     }
     

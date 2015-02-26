@@ -11,18 +11,9 @@ package possystem;
  */
 public interface DataAccessStrategy {
 
-    /**
-     * Tries to find a Customer by customer id.
-     * @param custId - must not be null or empty
-     * @return found Customer or null if not found or bad argument
-     */
-    public abstract CustomerStrategy findCustomer(final String custId);
+   
+    public abstract CustomerStrategy findCustomer(final String customerID);
 
-    /**
-     * Tries to find a Product by product id.
-     * @param prodId - must not be null or empty
-     * @return found Product or null if not found or bad argument
-     */
-    public abstract Product findProduct(final String prodId);
+    public abstract Product findProduct(final String productID);
     
 }

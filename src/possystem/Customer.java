@@ -16,28 +16,28 @@ public class Customer implements CustomerStrategy {
     public Customer() {
     }
 
-    public Customer(String customerID, String name) {
+    public Customer(final String customerID, final String name) {
         this.customerID = customerID;
         this.name = name;
     }
 
     @Override
-    public String getCustomerID() {
+    public final String getCustomerID() {
         return customerID;
     }
 
     @Override
-    public void setCustomerID(String customerID) {
+    public final void setCustomerID(final String customerID) {
         this.customerID = customerID;
     }
 
     @Override
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     @Override
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
     

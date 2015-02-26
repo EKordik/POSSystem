@@ -11,12 +11,16 @@ package possystem;
  */
 public class StartUp {
     public static void main(String[] args) {
-        CashRegister register = new CashRegister(new FakeDatabase(), new ConsoleInvoice());
+        CashRegister register = new CashRegister();
        
-        register.startSale("100");
-        register.addProduct("A101", "1");
-        register.addProduct("B205", "2");
+        register.startSale(new FakeDatabase(), "100", new ConsoleReceipt());
+        register.addProducttoSale("A101", "1");
+        register.addProducttoSale("B205", "2");
         
-        register.generateInvoice();
+        register.generateReceipt();
+        
+        register.startSale(new FakeDatabase(), "200", new ConsoleReceipt());
+        register.addProducttoSale("C222", "3");
+        register.generateReceipt();
     }
 }

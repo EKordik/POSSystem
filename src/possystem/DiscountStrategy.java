@@ -11,10 +11,10 @@ package possystem;
  */
 public interface DiscountStrategy {
 
-    double getDiscountAmt(double price, int qty);
+    public abstract double getDiscountAmt(double price, int qty);
 
-    double getDiscountRate();
+    public abstract double getDiscountRate();
 
-    void setDiscountRate(double discountRate);
+    public abstract void setDiscountRate(double discountRate);
     
 }

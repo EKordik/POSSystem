@@ -12,53 +12,59 @@ import java.text.DecimalFormat;
  * @author emmakordik
  */
 public class LineItem implements LineItemStrategy {
+    private DataAccessStrategy database;
     private ProductStrategy product;
     private int quantity;
 
     public LineItem() {
     }
 
-    public LineItem(Product product, String quantity) {
-        this.product = product;
-        this.quantity = Integer.parseInt(quantity);
+    public LineItem(final String product, final String qty, final DataAccessStrategy database) {
+        this.database = database;
+        setProduct(product);
+        setQuantity(qty);
     }
 
     @Override
-    public ProductStrategy getProduct() {
+    public final ProductStrategy getProduct() {
         return product;
     }
 
     @Override
-    public void setProduct(Product product) {
-        this.product = product;
+    public final void setProduct(final String productID) {
+        this.product = database.findProduct(productID);
     }
 
     @Override
-    public int getQuantity() {
+    public final int getQuantity() {
         return quantity;
     }
 
     @Override
-    public void setQuantity(String quantity) {
+    public final void setQuantity(final String quantity) {
         this.quantity = Integer.parseInt(quantity);
     }
     
     @Override
-    public double getLineTotal(){
+    public final double getLineTotal(){
         return (product.getPrice() * quantity) - product.getDiscountAmt(quantity);
     }
     
     @Override
-    public double getDiscountAmt(){
+    public final double getDiscountAmt(){
         return product.getDiscountAmt(quantity);
     }
     
+    public final double getPriceAfterDiscount(){
+        return product.getPrice() - product.getDiscountAmt(1);
+    }
+    
     @Override
-    public String toString(){
+    public final String toString(){
         DecimalFormat formatNum = new DecimalFormat("###,##0.00");
                 
         return product.getProductID() + " " + product.getDescription() + "   " +
-                formatNum.format(product.getPrice()-product.getDiscountAmt(1)) + "   " + quantity +
+                formatNum.format(getPriceAfterDiscount()) + "   " + quantity +
                 "   " + formatNum.format(getLineTotal()) + "\n Item Price " + formatNum.format(product.getPrice()) + 
                 " You Save " + formatNum.format(product.getDiscountAmt(quantity));
     }

@@ -17,11 +17,13 @@ public interface LineItemStrategy {
 
     public abstract double getDiscountAmt();
     
-    public abstract void setProduct(Product product);
+    public abstract void setProduct(String productID);
 
     public abstract void setQuantity(String quantity);
     
     public abstract double getLineTotal();
+    
+    public abstract double getPriceAfterDiscount();
     
     public abstract String toString();
 }
