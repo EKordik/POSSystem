@@ -26,8 +26,8 @@ public class LineItem implements LineItemStrategy {
     }
 
     @Override
-    public final ProductStrategy getProduct() {
-        return product;
+    public final String getProductID() {
+        return product.getProductID();
     }
 
     @Override

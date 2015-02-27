@@ -19,9 +19,17 @@ public class CashRegister {
         this.output = output;
     }
     
-    public final void addProducttoSale(final String productID, final String Qty){
-        receipt.addLineItem(productID, Qty);
+    public final void addProducttoSale(final String productID, final String qty){
+        receipt.addLineItem(productID, qty);
         
+    }
+    
+    public final void removeProductfromSale(final String productID, final String qty){
+        if(qty == null || qty.length() == 0){
+            receipt.removeLineItem(productID);
+        }else{
+            receipt.removeLineItemQty(productID, qty);
+        }
     }
     
     public final void generateReceipt(){ 

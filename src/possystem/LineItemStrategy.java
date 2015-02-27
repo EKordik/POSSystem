@@ -11,7 +11,7 @@ package possystem;
  */
 public interface LineItemStrategy {
 
-    public abstract ProductStrategy getProduct();
+    public abstract String getProductID();
 
     public abstract int getQuantity();
 
