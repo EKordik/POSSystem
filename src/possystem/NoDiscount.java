@@ -23,7 +23,7 @@ public class NoDiscount implements DiscountStrategy {
     }
 
     @Override
-    public final void setDiscountRate(double discountRate) {
+    public final void setDiscountRate(final double discountRate) {
         //Rate is zero. It cannot be set
     }
     

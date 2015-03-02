@@ -38,7 +38,7 @@ public class QtyDiscount implements DiscountStrategy {
     }
 
     @Override
-    public final void setDiscountRate(double discountRate) {
+    public final void setDiscountRate(final double discountRate) {
         this.discountRate=discountRate;
     }
     

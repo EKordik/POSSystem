@@ -12,7 +12,7 @@ package possystem;
 public class ConsoleReceipt implements ReceiptOutputStrategy {
 
     
-    public final void outputReceipt(Receipt receipt){
+    public final void outputReceipt(final Receipt receipt){
         System.out.println(receipt.generateCompleteReceipt());
         System.out.println("");
     }

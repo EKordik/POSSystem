@@ -13,11 +13,11 @@ public class StartUp {
     public static void main(String[] args) {
         CashRegister register = new CashRegister();
        
-//       // register.startSale(new FakeDatabase(), "100", new GuiReceipt());
-//        register.addProducttoSale("A101", "1");
-//        register.addProducttoSale("B205", "2");
-//        
-//        register.generateReceipt();
+        register.startSale(new FakeDatabase(), "100", new GuiReceipt());
+        register.addProducttoSale("A101", "1");
+        register.addProducttoSale("B205", "2");
+        
+        register.generateReceipt();
         
         register.startSale(new FakeDatabase(), "200", new ConsoleReceipt());
         register.addProducttoSale("C222", "3");
@@ -27,7 +27,6 @@ public class StartUp {
         register.addProducttoSale("A101", "1");
         register.addProducttoSale("C222","1");
         register.addProducttoSale("B205", "5");
-        register.generateReceipt();
         
         register.removeProductfromSale("A101", null);
         register.removeProductfromSale("B205", "1");

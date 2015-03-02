@@ -6,8 +6,11 @@
 package possystem;
 
 /**
- *
+ * Product class to create various products for purchase and calculate their
+ * discounts.
+ * 
  * @author ekordik
+ * @version 1.00
  */
 public class Product implements ProductStrategy {
     private String productID;
@@ -19,12 +22,12 @@ public class Product implements ProductStrategy {
     }
 
     
-    public Product(String productID, String description, double price, 
-            DiscountStrategy discount) {
-        this.productID = productID;
-        this.description = description;
-        this.price = price;
-        this.discount = discount;
+    public Product(final String productID, final String description, 
+            final double price, final DiscountStrategy discount) {
+        setProductID(productID);
+        setDescription(description);
+        setPrice(price);
+        setDiscount(discount);
     }
 
     public DiscountStrategy getDiscount() {
@@ -43,7 +46,7 @@ public class Product implements ProductStrategy {
     }
 
     @Override
-    public final  void setProductID(String productID) {
+    public final  void setProductID(final String productID) {
         this.productID = productID;
     }
 
@@ -53,7 +56,7 @@ public class Product implements ProductStrategy {
     }
 
     @Override
-    public final void setDescription(String description) {
+    public final void setDescription(final String description) {
         this.description = description;
     }
 
@@ -68,7 +71,7 @@ public class Product implements ProductStrategy {
     }
     
     @Override
-    public final double getDiscountAmt(int qty){
+    public final double getDiscountAmt(final int qty){
         return discount.getDiscountAmt(price, qty);
     }
 
