@@ -33,7 +33,10 @@ public class Receipt {
      * @param database
      * @param customerID 
      */
-    public Receipt(DataAccessStrategy database, String customerID){
+    public Receipt(DataAccessStrategy database, String customerID) throws IllegalArgumentException{
+        if(database == null){
+            throw new IllegalArgumentException("Needs a Database to Run. Please pass one in.");
+        }
         this.database = database;
         lineItems = new LineItem[0];
         customer = database.findCustomer(customerID);
@@ -46,7 +49,7 @@ public class Receipt {
      * @param productID
      * @param qty 
      */
-    public final void addLineItem(String productID, String qty){
+    public final void addLineItem(String productID, String qty) throws IllegalArgumentException{
         LineItem lineItem = new LineItem(productID, qty, database);
         addToLineItemArray(lineItem);
     }

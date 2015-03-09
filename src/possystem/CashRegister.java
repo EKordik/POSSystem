@@ -26,9 +26,14 @@ public class CashRegister {
      * @param output 
      */
     public final void startSale(final DataAccessStrategy database, final String customerID, 
-            ReceiptOutputStrategy output){
+            ReceiptOutputStrategy output) throws IllegalArgumentException{
+       
         receipt = new Receipt(database, customerID);
+        if(output == null){
+            throw new IllegalArgumentException("Pass in an output stragey");
+        }
         this.output = output;
+       
     }
     
     /**
@@ -36,7 +41,8 @@ public class CashRegister {
      * @param productID
      * @param qty 
      */
-    public final void addProducttoSale(final String productID, final String qty){
+    public final void addProducttoSale(final String productID, final String qty) 
+        throws IllegalArgumentException{
         receipt.addLineItem(productID, qty);
         
     }

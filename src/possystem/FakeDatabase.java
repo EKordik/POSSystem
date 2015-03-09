@@ -28,11 +28,10 @@ public class FakeDatabase implements DataAccessStrategy {
     };
 
     @Override
-    public final CustomerStrategy findCustomer(String customerID) {
+    public final CustomerStrategy findCustomer(String customerID) throws IllegalArgumentException {
         CustomerStrategy customer = new Customer();
         if(customerID == null || customerID.length() == 0){
-            //Replace with exception error message
-            return null;
+            throw new IllegalArgumentException("Enter a valid Customer ID");
         }
         
         for(CustomerStrategy c: customers){
@@ -46,12 +45,11 @@ public class FakeDatabase implements DataAccessStrategy {
     }
 
     @Override
-    public final Product findProduct(String productId) {
+    public final Product findProduct(String productId) throws IllegalArgumentException {
         Product product = new Product();
         
         if(productId == null || productId.length() == 0){
-            //Add code to throw except/give error message
-            return null;
+            throw new IllegalArgumentException("Enter a valid Product ID");
         }
        
         for(Product p: products){

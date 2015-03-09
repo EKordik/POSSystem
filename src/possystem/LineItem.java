@@ -19,7 +19,11 @@ public class LineItem implements LineItemStrategy {
     public LineItem() {
     }
 
-    public LineItem(final String product, final String qty, final DataAccessStrategy database) {
+    public LineItem(final String product, final String qty, final DataAccessStrategy database) 
+            throws IllegalArgumentException {
+        if(database == null){
+            throw new IllegalArgumentException("Database Required");
+        }
         this.database = database;
         setProduct(product);
         setQuantity(qty);
@@ -31,7 +35,7 @@ public class LineItem implements LineItemStrategy {
     }
 
     @Override
-    public final void setProduct(final String productID) {
+    public final void setProduct(final String productID) throws IllegalArgumentException {
         this.product = database.findProduct(productID);
     }
 
@@ -42,6 +46,9 @@ public class LineItem implements LineItemStrategy {
 
     @Override
     public final void setQuantity(final String quantity) {
+        if(quantity == null || quantity.isEmpty() ){
+            
+        }
         this.quantity = Integer.parseInt(quantity);
     }
     
